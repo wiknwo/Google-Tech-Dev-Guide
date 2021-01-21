@@ -14,7 +14,7 @@
 # sumNumbers("7 11") → 18
 def sumnumbers(somestring):
     sum = 0 # running sum
-    value_string = ' # String to hold digits
+    value_string = '' # String to hold digits
     for i in range(0, len(somestring)):
         character = somestring[i]
 
@@ -22,20 +22,21 @@ def sumnumbers(somestring):
         if character.isdigit() and (i == len(somestring) - 1):
             value_string = value_string + character
             sum = sum + int(value_string)
-            value_string = ""
+            value_string = ''
 
         # Character is a digit
         elif character.isdigit():
             value_string = value_string + character
 
+        # Character is not digit and value string is not empty
+        elif (not character.isdigit()) and value_string:
+            sum = sum + int(value_string)
+            value_string = ''
+            
         # Character is not digit and value string is empty
         elif (not character.isdigit()) and value_string:
             sum = sum + 0
 
-        # Character is not digit and value string is not empty
-        elif (not character.isdigit()) and (not value_string):
-            sum = sum + int(value_string)
-            value_string = ""
     return sum
 
 def main():
