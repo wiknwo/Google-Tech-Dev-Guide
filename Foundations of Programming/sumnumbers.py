@@ -14,7 +14,7 @@
 # sumNumbers("7 11") → 18
 def sumnumbers(somestring):
     sum = 0 # running sum
-    value_string = "" # String to hold digits
+    value_string = ' # String to hold digits
     for i in range(0, len(somestring)):
         character = somestring[i]
 
