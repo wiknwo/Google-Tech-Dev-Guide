@@ -29,9 +29,39 @@
 def main():
     stringtodecompress = input("Enter compressed string: ")
     print(stringtodecompress) # Check input read correctly
-
+    valuestring = '' # String to hold digit representing number of times to repeat following string in decompressed string
+    decompressedstring = '' # Decompressed string
+    repetitions = 0 # Number of times to concatenate inner string
+    word = '' # String to hold current word
+    
     # Parse the input string
-    for 
+    for character in stringtodecompress:
+        if character.isdigit():
+            valuestring = valuestring + character
+            print("valuestring: {}".format(valuestring))
+
+        elif character.isalpha() and valuestring:
+            word = word + character
+            print(word)
+
+        # Start of new string
+        elif character == "[":
+            print("valuestring: {}".format(valuestring))
+            repetitions = repetitions + int(valuestring)
+            
+        # End of new string
+        elif character == "]":
+            for i in range(0, repetitions):
+                decompressedstring = decompressedstring + word
+            valuestring = ""
+            word = ""
+            repetitions = 0
+
+        elif character.isalpha() and not valuestring:
+            word = word + character
+            decompressedstring = decompressedstring + word
+    
+    print(decompressedstring)
 
 if __name__ == '__main__':
     main()
